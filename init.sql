@@ -1,0 +1,5 @@
+-- init.sql
+CREATE DATABASE IF NOT EXISTS Megurit;
+CREATE USER 'eliech'@'%' IDENTIFIED BY 'Qwerty01!!';
+GRANT ALL PRIVILEGES ON Megurit.* TO 'eliech'@'%';
+FLUSH PRIVILEGES;
