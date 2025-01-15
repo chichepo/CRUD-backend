@@ -7,26 +7,26 @@ CREATE TABLE Cities (
     CityName VARCHAR(255) NOT NULL
 );
 
--- Table 2: Projects (depends on Cities)
+-- Table 2: Projects (updated foreign key)
 CREATE TABLE Projects (
     ProjectID INT AUTO_INCREMENT PRIMARY KEY,
     ProjectCode VARCHAR(50) NOT NULL,
     CodeName VARCHAR(255),
     CityId INT NOT NULL,
     Address VARCHAR(255),
-    GeographicalLocation VARCHAR(255),
+    GeographicalLocation POINT, -- Changed to POINT for spatial data
     ProjectManagerName VARCHAR(255),
     ProjectStatus VARCHAR(50),
-    NumberOfBuildings INT,
-    NumberOfApartments INT,
-    NumberOfAvailableApartments INT,
-    GeneralInformation TEXT,
-    CommunityProject BOOLEAN,
-    LuxuriousProject BOOLEAN,
-    ApartmentRentalUnderSupervision BOOLEAN,
-    RandomDrawStatus BOOLEAN,
+    NumberOfBuildings INT CHECK (NumberOfBuildings >= 0),
+    NumberOfApartments INT CHECK (NumberOfApartments >= 0),
+    NumberOfAvailableApartments INT CHECK (NumberOfAvailableApartments >= 0),
+    GeneralInformation LONGTEXT,
+    CommunityProject BOOLEAN DEFAULT FALSE,
+    LuxuriousProject BOOLEAN DEFAULT FALSE,
+    ApartmentRentalUnderSupervision BOOLEAN DEFAULT FALSE,
+    RandomDrawStatus BOOLEAN DEFAULT FALSE,
     PartnershipDetails TEXT,
-    FOREIGN KEY (CityId) REFERENCES Cities(CityId)
+    FOREIGN KEY (CityId) REFERENCES Cities(CityId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Table 3: Buildings (depends on Projects)

@@ -1,21 +1,16 @@
-**CRUD Backend**
+# **CRUD Backend**
 
-A Node.js backend application for managing CRUD operations, designed for educational purposes. It supports modular routes, controllers, and database interactions using MySQL. Includes API documentation with Swagger.
+A Node.js backend application for managing CRUD operations, designed for educational purposes. 
 
-**Table of Contents**
+It supports modular routes, controllers, and database interactions using MySQL. Includes API documentation with Swagger.
 
+## **Table of Contents**
 1.Features
-
 2.Prerequisites
-
 3.Setup
-
 4.Running Locally
-
 5.Docker Deployment
-
 6.API Documentation
-
 7.Project Structure
 
 **Features**
@@ -51,6 +46,11 @@ npm install
 3.Configure environment variables:
 
 -Create a .env file in the root directory:
+
+DB_HOST=127.0.0.1
+DB_USER=eliech
+DB_PASSWORD=Qwerty01!!
+DB_NAME=Megurit
 
 cp .env.example .env
 
