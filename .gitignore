@@ -128,3 +128,20 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Docker-specific ignores
+
+# Ignore Docker volumes and data
+docker-data/
+docker-logs/
+DB-Docker-Setup/data/
+DB-Docker-Setup/mysql/
+DB-Docker-Setup/*.log
+DB-Docker-Setup/*.pid
+
+# Ignore Docker Compose override and backup files
+docker-compose.override.yml
+docker-compose.yml.backup
+
+# Ignore dynamically generated .env files by Docker
+.env.docker

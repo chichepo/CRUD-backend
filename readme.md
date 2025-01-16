@@ -1,51 +1,133 @@
+# **CRUD Backend**
 
-# CRUD Backend Project
+A Node.js backend application for managing CRUD operations, designed for educational purposes. 
 
-## Overview
-This project provides a backend service to manage external parameters. It allows you to Create, Read, Update, and Delete (CRUD) records in a MySQL database. The API is built with Node.js and Express, and it's connected to a MySQL database.
+It supports modular routes, controllers, and database interactions using MySQL. Includes API documentation with Swagger.
 
-## How to Setup
+## **Table of Contents**
+1.Features
 
-### Prerequisites
-- Node.js installed
-- MySQL database installed and running
+2.Prerequisites
 
-### Steps
+3.Setup
 
-1. **Clone the Repository**:  
-   ```bash
-   git clone https://github.com/your-username/crud-backend.git
-   ```
+4.Running Locally
 
-2. **Navigate to Project Directory**:  
-   ```bash
-   cd crud-backend
-   ```
+5.Docker Deployment
 
-3. **Install Dependencies**:  
-   ```bash
-   npm install
-   ```
+6.API Documentation
 
-4. **Environment Configuration**:  
-   Create a `.env` file at the root of your project and populate the database connection details:
-   ```
+7.Project Structure
+
+### **Features**
+
+- **Modular Design**: 
+    
+    Separate controllers and routes for clean code.
+
+- **Database Integration**: 
+    
+    MySQL database support with Docker containerization.
+
+- **Swagger Documentation**: 
+    
+    Built-in interactive API docs.
+
+- **Environment Configuration**: 
+
+    Managed using .env variables.
+
+## **Prerequisites**
+
+-[Node.js](https://nodejs.org/) v14 or higher
+
+-[Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed
+
+-[MySQL](https://www.mysql.com/) (optional for manual setup)
+
+## **Setup**
+
+### 1. Clone the repository:
+
+    git clone https://github.com/your-repo/crud-backend.git
+    
+    cd crud-backend
+
+### 2. Install dependencies:
+
+    npm install
+
+### 3.Configure environment variables:
+
+Create a .env file in the root directory with the following content:
+
     DB_HOST=127.0.0.1
     DB_USER=eliech
     DB_PASSWORD=Qwerty01!!
     DB_NAME=Megurit
-   ```
 
-5. **Run the Project**:  
-   ```bash
-   npm start
-   ```
+Update the .env file with your database and application configuration if you have.
 
-## API Endpoints
+## **Running Locally**
 
-- Create Record: POST `/api/externalParameters`
-- Read Records: GET `/api/externalParameters`
-- Update Record: PUT `/api/externalParameters/:id`
-- Delete Record: DELETE `/api/externalParameters/:id`
+### 1. Start the application:
 
-For detailed information, refer to the API documentation.
+    npm start
+
+### 2. Access the application:
+- API Base URL: [http://localhost:3001](http://localhost:3001)
+- Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+
+## **Docker Deployment**
+
+### 1. **Configure Environment Variables**:
+
+Ensure you have a .env file with the necessary configurations. For Docker, these will be loaded into the container.
+
+### 2. **Build and Run Containers**:
+
+Navigate to the DB-Docker-Setup directory and run the following commands:
+    
+    docker-compose up --build
+
+Verify that the containers are running:
+
+    docker ps
+
+Access the application:
+
+- API Base URL: [http://localhost:3001](http://localhost:3001)
+
+- Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+
+### 3. **Stop and clean the Containers (If needed)**:
+
+To stop the application, run:
+
+    docker-compose down
+
+To Remove associated Docker volumes (to reset the database):
+
+    docker volume prune
+
+**API Documentation**
+
+-Swagger UI: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+
+-The API is fully documented and supports interactive exploration.
+
+## **Project Structure**
+
+    .
+    ├── DB-Docker-Setup
+    │   ├── docker-compose.yml    # Docker Compose configuration
+    │   └── init.sql              # Database initialization script
+    ├── Dockerfile                # Dockerfile for Node.js app
+    ├── config
+    │   └── dbConfig.js           # Database configuration
+    ├── controllers               # Business logic and controllers
+    ├── index.js                  # Application entry point
+    ├── package.json              # Project dependencies and scripts
+    ├── routes                    # Route definitions
+    ├── utils                     # Utility functions
+    └── readme.md                 # Documentation
