@@ -2,11 +2,11 @@
 const db = require('../config/dbConfig');
 
 exports.createApartmentTypes = (req, res, next) => {
-    const { TypeID, TypeName, NumberOfRooms } = req.body;
-    const query = `INSERT INTO ApartmentTypes (TypeID, TypeName, NumberOfRooms) VALUES (?, ?, ?)`;
-    db.query(query, [TypeID, TypeName, NumberOfRooms], (err, result) => {
+    const { TypeName, NumberOfRooms } = req.body;
+    const query = `INSERT INTO ApartmentTypes (TypeName, NumberOfRooms) VALUES (?, ?)`;
+    db.query(query, [TypeName, NumberOfRooms], (err, result) => {
         if (err) return next(err);
-        res.status(201).send(newRecord);
+        res.status(201).send({ id: result.insertId });
     });
 };
 
@@ -20,10 +20,10 @@ exports.getAllApartmentTypes = (req, res, next) => {
 };
 
 exports.updateApartmentTypes = (req, res, next) => {
-    const { TypeID, TypeName, NumberOfRooms } = req.body;
+    const { TypeName, NumberOfRooms } = req.body;
     const { id } = req.params;
-    const query = `UPDATE ApartmentTypes SET TypeID=?, TypeName=?, NumberOfRooms=? WHERE TypeID=?`;
-    db.query(query, [TypeID, TypeName, NumberOfRooms, id], (err, result) => {
+    const query = `UPDATE ApartmentTypes SET TypeName=?, NumberOfRooms=? WHERE TypeID=?`;
+    db.query(query, [TypeName, NumberOfRooms, id], (err, result) => {
         if (err) return next(err);
         if (result.affectedRows === 0) return res.status(404).send('Record not found');
         res.status(200).send('Record updated');

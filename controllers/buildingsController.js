@@ -1,4 +1,4 @@
-
+// BuildingsController.js
 const db = require('../config/dbConfig');
 
 exports.createBuilding = (req, res, next) => {
@@ -6,7 +6,7 @@ exports.createBuilding = (req, res, next) => {
     const query = 'INSERT INTO Buildings (BuildingName, ProjectID) VALUES (?, ?)';
     db.query(query, [BuildingName, ProjectID], (err, result) => {
         if (err) return next(err);
-        res.status(201).send(newRecord);
+        res.status(201).send({ id: result.insertId });
     });
 };
 
