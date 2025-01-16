@@ -19,7 +19,7 @@ It supports modular routes, controllers, and database interactions using MySQL. 
 
 7.Project Structure
 
-### **Features**
+## **1 - Features**
 
 - **Modular Design**: 
     
@@ -37,7 +37,7 @@ It supports modular routes, controllers, and database interactions using MySQL. 
 
     Managed using .env variables.
 
-## **Prerequisites**
+## **2 - Prerequisites**
 
 -[Node.js](https://nodejs.org/) v14 or higher
 
@@ -45,7 +45,7 @@ It supports modular routes, controllers, and database interactions using MySQL. 
 
 -[MySQL](https://www.mysql.com/) (optional for manual setup)
 
-## **Setup**
+## **3 - Setup**
 
 ### 1. Clone the repository:
 
@@ -68,7 +68,7 @@ Create a .env file in the root directory with the following content:
 
 Update the .env file with your database and application configuration if you have.
 
-## **Running Locally**
+## **4 - Running Locally**
 
 ### 1. Start the application:
 
@@ -78,7 +78,7 @@ Update the .env file with your database and application configuration if you hav
 - API Base URL: [http://localhost:3001](http://localhost:3001)
 - Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
 
-## **Docker Deployment**
+## **5 - Docker Deployment**
 
 ### 1. **Configure Environment Variables**:
 
@@ -110,13 +110,13 @@ To Remove associated Docker volumes (to reset the database):
 
     docker volume prune
 
-**API Documentation**
+## **6 - API Documentation**
 
 -Swagger UI: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
 
 -The API is fully documented and supports interactive exploration.
 
-## **Project Structure**
+## **7 - Project Structure**
 
     .
     ├── DB-Docker-Setup
