@@ -6,24 +6,38 @@ It supports modular routes, controllers, and database interactions using MySQL. 
 
 ## **Table of Contents**
 1.Features
+
 2.Prerequisites
+
 3.Setup
+
 4.Running Locally
+
 5.Docker Deployment
+
 6.API Documentation
+
 7.Project Structure
 
-**Features**
+### **Features**
 
--**Modular Design**: Separate controllers and routes for clean code.
+- **Modular Design**: 
+    
+    Separate controllers and routes for clean code.
 
--**Database Integration**: MySQL database support with Docker containerization.
+- **Database Integration**: 
+    
+    MySQL database support with Docker containerization.
 
--**Swagger Documentation**: Built-in interactive API docs.
+- **Swagger Documentation**: 
+    
+    Built-in interactive API docs.
 
--**Environment Configuration**: Managed using .env variables.
+- **Environment Configuration**: 
 
-**Prerequisites**
+    Managed using .env variables.
+
+## **Prerequisites**
 
 -[Node.js](https://nodejs.org/) v14 or higher
 
@@ -31,70 +45,70 @@ It supports modular routes, controllers, and database interactions using MySQL. 
 
 -[MySQL](https://www.mysql.com/) (optional for manual setup)
 
-**Setup**
+## **Setup**
 
-1.Clone the repository:
+### 1. Clone the repository:
 
-git clone https://github.com/your-repo/crud-backend.git
+    git clone https://github.com/your-repo/crud-backend.git
+    
+    cd crud-backend
 
-cd crud-backend
+### 2. Install dependencies:
 
-2.Install dependencies:
+    npm install
 
-npm install
+### 3.Configure environment variables:
 
-3.Configure environment variables:
+Create a .env file in the root directory with the following content:
 
--Create a .env file in the root directory:
+    DB_HOST=127.0.0.1
+    DB_USER=eliech
+    DB_PASSWORD=Qwerty01!!
+    DB_NAME=Megurit
 
-DB_HOST=127.0.0.1
-DB_USER=eliech
-DB_PASSWORD=Qwerty01!!
-DB_NAME=Megurit
+Update the .env file with your database and application configuration if you have.
 
-cp .env.example .env
+## **Running Locally**
 
--Update the .env file with your database and application configuration.
+### 1. Start the application:
 
-**Running Locally**
+    npm start
 
-1.Start the application:
+### 2. Access the application:
+- API Base URL: [http://localhost:3001](http://localhost:3001)
+- Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
 
-npm start
+## **Docker Deployment**
 
-2.Access the application:
-
--API Base URL: [http://localhost:3001](http://localhost:3001)
-
--Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
-
-**Docker Deployment**
-
-1.**Configure Environment Variables**:
+### 1. **Configure Environment Variables**:
 
 Ensure you have a .env file with the necessary configurations. For Docker, these will be loaded into the container.
 
-2.**Build and Run Containers**:
+### 2. **Build and Run Containers**:
 
--Navigate to the DB-Docker-Setup directory and run the following commands:
+Navigate to the DB-Docker-Setup directory and run the following commands:
+    
+    docker-compose up --build
 
-docker-compose up --build
+Verify that the containers are running:
 
--Verify that the containers are running:
+    docker ps
 
-docker ps
+Access the application:
 
--Access the application:
+- API Base URL: [http://localhost:3001](http://localhost:3001)
 
--API Base URL: [http://localhost:3001](http://localhost:3001)
+- Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
 
--Swagger Documentation: [http://localhost:3001/api-docs](http://localhost:3001/api-docs)
-
-3.**Stop the Containers**:
+### 3. **Stop and clean the Containers (If needed)**:
 
 To stop the application, run:
 
-docker-compose down
+    docker-compose down
+
+To Remove associated Docker volumes (to reset the database):
+
+    docker volume prune
 
 **API Documentation**
 
@@ -102,30 +116,18 @@ docker-compose down
 
 -The API is fully documented and supports interactive exploration.
 
-**Project Structure**
+## **Project Structure**
 
-.
-
-├── DB-Docker-Setup
-
-│   ├── docker-compose.yml    # Docker Compose configuration
-
-│   └── init.sql              # Database initialization script
-
-├── Dockerfile                # Dockerfile for Node.js app
-
-├── config
-
-│   └── dbConfig.js           # Database configuration
-
-├── controllers               # Business logic and controllers
-
-├── index.js                  # Application entry point
-
-├── package.json              # Project dependencies and scripts
-
-├── routes                    # Route definitions
-
-├── utils                     # Utility functions
-
-└── readme.md                 # Documentation
+    .
+    ├── DB-Docker-Setup
+    │   ├── docker-compose.yml    # Docker Compose configuration
+    │   └── init.sql              # Database initialization script
+    ├── Dockerfile                # Dockerfile for Node.js app
+    ├── config
+    │   └── dbConfig.js           # Database configuration
+    ├── controllers               # Business logic and controllers
+    ├── index.js                  # Application entry point
+    ├── package.json              # Project dependencies and scripts
+    ├── routes                    # Route definitions
+    ├── utils                     # Utility functions
+    └── readme.md                 # Documentation
