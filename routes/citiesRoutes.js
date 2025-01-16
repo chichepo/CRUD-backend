@@ -16,13 +16,24 @@ const router = express.Router();
  *   post:
  *     tags: [Cities]
  *     summary: Create a new city
+ *     requestBody:
+ *       description: City details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               CityName:
+ *                 type: string
+ *                 description: Name of the city.
  *     responses:
  *       201:
- *         description: Record inserted successfully.
+ *         description: City created successfully.
  *       500:
  *         description: Server error.
  */
-router.post('/', citiesController.createCities);  // 201 Created
+router.post('/', citiesController.createCities); // 201 Created
 
 /**
  * @swagger
@@ -32,48 +43,67 @@ router.post('/', citiesController.createCities);  // 201 Created
  *     summary: Retrieve a list of all cities
  *     responses:
  *       200:
- *         description: List of cities.
+ *         description: List of cities retrieved successfully.
  *       500:
  *         description: Server error.
  */
-router.get('/', citiesController.getAllCities);  // 200 OK
+router.get('/', citiesController.getAllCities); // 200 OK
 
 /**
  * @swagger
  * /api/cities/{id}:
  *   put:
  *     tags: [Cities]
- *     summary: Update a City by ID
+ *     summary: Update a city by ID
  *     parameters:
  *       - name: id
- *         description: City ID.
+ *         description: City ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Updated city details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               CityName:
+ *                 type: string
+ *                 description: Name of the city.
  *     responses:
  *       200:
- *         description: Record updated successfully.
+ *         description: City updated successfully.
+ *       404:
+ *         description: City not found.
  *       500:
  *         description: Server error.
  */
-router.put('/:id', citiesController.updateCities);  // 200 OK
+router.put('/:id', citiesController.updateCities); // 200 OK
 
 /**
  * @swagger
  * /api/cities/{id}:
  *   delete:
  *     tags: [Cities]
- *     summary: Delete an city by ID
+ *     summary: Delete a city by ID
  *     parameters:
  *       - name: id
- *         description: City ID.
+ *         description: City ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
  *     responses:
  *       204:
- *         description: Record deleted successfully.
+ *         description: City deleted successfully.
+ *       404:
+ *         description: City not found.
  *       500:
  *         description: Server error.
  */
-router.delete('/:id', citiesController.deleteCities);  // 204 No Content
+router.delete('/:id', citiesController.deleteCities); // 204 No Content
 
 module.exports = router;

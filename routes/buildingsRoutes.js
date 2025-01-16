@@ -1,4 +1,4 @@
-
+// BuildingsRoutes.js
 const express = require('express');
 const buildingsController = require('../controllers/buildingsController');
 const router = express.Router();
@@ -15,10 +15,24 @@ const router = express.Router();
  * /api/buildings:
  *   post:
  *     tags: [Buildings]
- *     summary: Create a new Building
+ *     summary: Create a new building
+ *     requestBody:
+ *       description: Building details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               BuildingName:
+ *                 type: string
+ *                 description: Name of the building.
+ *               ProjectID:
+ *                 type: integer
+ *                 description: Associated project ID.
  *     responses:
  *       201:
- *         description: Record inserted successfully.
+ *         description: Building created successfully.
  *       500:
  *         description: Server error.
  */
@@ -29,10 +43,10 @@ router.post('/', buildingsController.createBuilding);
  * /api/buildings:
  *   get:
  *     tags: [Buildings]
- *     summary: Retrieve a list of all Buildings
+ *     summary: Retrieve a list of all buildings
  *     responses:
  *       200:
- *         description: List of Buildings.
+ *         description: List of buildings retrieved successfully.
  *       500:
  *         description: Server error.
  */
@@ -46,12 +60,30 @@ router.get('/', buildingsController.getAllBuildings);
  *     summary: Update a building by ID
  *     parameters:
  *       - name: id
- *         description: building ID.
+ *         description: Building ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Updated building details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               BuildingName:
+ *                 type: string
+ *                 description: Name of the building.
+ *               ProjectID:
+ *                 type: integer
+ *                 description: Associated project ID.
  *     responses:
  *       200:
- *         description: Record updated successfully.
+ *         description: Building updated successfully.
+ *       404:
+ *         description: Building not found.
  *       500:
  *         description: Server error.
  */
@@ -62,15 +94,19 @@ router.put('/:id', buildingsController.updateBuilding);
  * /api/buildings/{id}:
  *   delete:
  *     tags: [Buildings]
- *     summary: Delete an building by ID
+ *     summary: Delete a building by ID
  *     parameters:
  *       - name: id
- *         description: building ID.
+ *         description: Building ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
  *     responses:
  *       204:
- *         description: Record deleted successfully.
+ *         description: Building deleted successfully.
+ *       404:
+ *         description: Building not found.
  *       500:
  *         description: Server error.
  */

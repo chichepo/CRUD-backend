@@ -16,9 +16,23 @@ const router = express.Router();
  *   post:
  *     tags: [Apartment-Types]
  *     summary: Create a new apartment type
+ *     requestBody:
+ *       description: Apartment type details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               TypeName:
+ *                 type: string
+ *                 description: The name of the apartment type.
+ *               NumberOfRooms:
+ *                 type: integer
+ *                 description: The number of rooms in the apartment type.
  *     responses:
  *       201:
- *         description: Record inserted successfully.
+ *         description: Apartment type created successfully.
  *       500:
  *         description: Server error.
  */
@@ -32,7 +46,7 @@ router.post('/', ApartmentTypesController.createApartmentTypes);
  *     summary: Retrieve a list of all apartment types
  *     responses:
  *       200:
- *         description: List of apartment types.
+ *         description: List of apartment types retrieved successfully.
  *       500:
  *         description: Server error.
  */
@@ -43,15 +57,33 @@ router.get('/', ApartmentTypesController.getAllApartmentTypes);
  * /api/apartmentTypes/{id}:
  *   put:
  *     tags: [Apartment-Types]
- *     summary: Update a apartment types by ID
+ *     summary: Update an apartment type by ID
  *     parameters:
  *       - name: id
- *         description: apartment types ID.
+ *         description: Apartment type ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Updated apartment type details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               TypeName:
+ *                 type: string
+ *                 description: The name of the apartment type.
+ *               NumberOfRooms:
+ *                 type: integer
+ *                 description: The number of rooms in the apartment type.
  *     responses:
  *       200:
- *         description: Record updated successfully.
+ *         description: Apartment type updated successfully.
+ *       404:
+ *         description: Apartment type not found.
  *       500:
  *         description: Server error.
  */
@@ -62,15 +94,19 @@ router.put('/:id', ApartmentTypesController.updateApartmentTypes);
  * /api/apartmentTypes/{id}:
  *   delete:
  *     tags: [Apartment-Types]
- *     summary: Delete a apartment types by ID
+ *     summary: Delete an apartment type by ID
  *     parameters:
  *       - name: id
- *         description: apartment types ID.
+ *         description: Apartment type ID
  *         in: path
  *         required: true
+ *         schema:
+ *           type: integer
  *     responses:
  *       204:
- *         description: Record deleted successfully.
+ *         description: Apartment type deleted successfully.
+ *       404:
+ *         description: Apartment type not found.
  *       500:
  *         description: Server error.
  */
