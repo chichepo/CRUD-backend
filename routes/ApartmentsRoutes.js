@@ -23,6 +23,39 @@ const router = express.Router();
  *         application/json:
  *           schema:
  *             type: object
+ *             properties:
+ *               BuildingID:
+ *                 type: integer
+ *                 description: ID of the associated building.
+ *               ApartmentNumber:
+ *                 type: string
+ *                 description: Apartment number.
+ *               Floor:
+ *                 type: integer
+ *                 description: Floor number of the apartment.
+ *               CardinalDirection:
+ *                 type: string
+ *                 description: Cardinal direction (e.g., North, South).
+ *               TypeID:
+ *                 type: integer
+ *                 description: ID of the apartment type.
+ *               TotalSurfaceM2:
+ *                 type: number
+ *                 format: float
+ *                 description: Total surface area in square meters.
+ *               BalconyOrGardenSurfaceM2:
+ *                 type: number
+ *                 format: float
+ *                 description: Surface area of the balcony or garden in square meters.
+ *               UnderSupervision:
+ *                 type: boolean
+ *                 description: Whether the apartment is under supervision.
+ *               DrawingPlanLink:
+ *                 type: string
+ *                 description: Link to the drawing plan of the apartment.
+ *               RentalPriceID:
+ *                 type: integer
+ *                 description: ID of the rental price.
  *     responses:
  *       201:
  *         description: Apartment created successfully.
@@ -65,6 +98,29 @@ router.get('/', ApartmentsController.getAllApartments);
  *         application/json:
  *           schema:
  *             type: object
+ *             properties:
+ *               BuildingID:
+ *                 type: integer
+ *               ApartmentNumber:
+ *                 type: string
+ *               Floor:
+ *                 type: integer
+ *               CardinalDirection:
+ *                 type: string
+ *               TypeID:
+ *                 type: integer
+ *               TotalSurfaceM2:
+ *                 type: number
+ *                 format: float
+ *               BalconyOrGardenSurfaceM2:
+ *                 type: number
+ *                 format: float
+ *               UnderSupervision:
+ *                 type: boolean
+ *               DrawingPlanLink:
+ *                 type: string
+ *               RentalPriceID:
+ *                 type: integer
  *     responses:
  *       200:
  *         description: Apartment updated successfully.
